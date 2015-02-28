@@ -1,0 +1,31 @@
+<div>
+  <a href="#/main">Back to search screen</a>
+  <h2>User ID : {{user.id}}</h2>
+  <img ng-src="{{user.avatar_url}}" title="{{user.login}}">
+
+  <div>
+    Order:
+    <select ng-model="reposSortOrder">
+      <option ng-repeat="column in columns" value="{{column}}">{{ column }}</option>
+    </select>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Stargazers</th>
+      <th>Language</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="repo in repos | orderBy:reposSortOrder">
+      <td>
+        <a href="" ng-click="goToRepo(repo)">{{repo.name}}</a>
+      </td>
+      <td>{{repo.stargazers_count | number}}</td>
+      <td>{{repo.language}}</td>
+    </tr>
+  </tbody>
+</table>
